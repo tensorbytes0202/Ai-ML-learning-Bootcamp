@@ -3,7 +3,7 @@
 
 ---
 
-# 🧭 Table of Contents
+ 🧭 Table of Contents
 - [1. Introduction to Artificial Intelligence](#-1-introduction-to-artificial-intelligence)
 - [2. Introduction to Machine Learning](#-2-introduction-to-machine-learning)
 - [3. Current State of AI](#-3-current-state-of-ai)
