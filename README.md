@@ -21,9 +21,9 @@
 
 Artificial Intelligence (AI) refers to systems that can:
 
-- Learn from data  
-- Make decisions  
-- Adapt over time  
+* Learn from data  
+* Make decisions  
+* Adapt over time  
 
 AI systems are intelligent agents that perceive and act to achieve goals.
 
@@ -39,16 +39,16 @@ Machine Learning enables systems to learn patterns from data instead of hardcode
 f(X) → Y
 ```
 
-- **X → Features**  
-- **Y → Target**
+* **X → Features**  
+* **Y → Target**
 
 ---
 
 ## 🌐 3. Current State of AI
 
-- 🤖 AI Agents  
-- 🧠 Large Language Models  
-- 🎨 Generative AI  
+* 🤖 AI Agents  
+* 🧠 Large Language Models  
+* 🎨 Generative AI  
 
 ⚠️ All modern AI systems rely on ML pipelines.
 
@@ -57,15 +57,15 @@ f(X) → Y
 ## 📊 4. Types of Machine Learning
 
 ### 🟦 Supervised Learning
-- Regression  
-- Classification  
+* Regression  
+* Classification  
 
 ### 🟩 Unsupervised Learning
-- Clustering  
-- Dimensionality Reduction  
+* Clustering  
+* Dimensionality Reduction  
 
 ### 🟥 Reinforcement Learning
-- Learning via rewards  
+* Learning via rewards  
 
 ---
 
@@ -73,8 +73,8 @@ f(X) → Y
 
 A correct ML system starts with:
 
-- Features (X)  
-- Target (Y)  
+* Features (X)  
+* Target (Y)  
 
 ⚠️ Poor problem definition leads to poor models.
 
@@ -84,9 +84,9 @@ A correct ML system starts with:
 
 ### 🟦 Step 1: Data Extraction
 Sources:
-- CSV  
-- Databases  
-- APIs  
+* CSV  
+* Databases  
+* APIs  
 
 ---
 
@@ -150,18 +150,18 @@ y = data["target"]
 ---
 
 ### 🧠 Production Insight
-- Use ETL pipelines  
-- Version data (DVC)  
-- Validate data automatically  
+* Use ETL pipelines  
+* Version data (DVC)  
+* Validate data automatically  
 
 ---
 
 ## 🧰 7. Libraries & Tools
 
-- NumPy → Numerical computing  
-- pandas → Data handling  
-- scikit-learn → ML models  
-- Matplotlib → Visualization  
+* NumPy → Numerical computing  
+* pandas → Data handling  
+* scikit-learn → ML models  
+* Matplotlib → Visualization  
 
 ---
 
@@ -215,10 +215,11 @@ pipeline.fit(X_train, y_train)
 
 ---
 
-## 📚 11. Resources
+# 📚 11. Resources
 
-- pandas documentation  
-- scikit-learn documentation  
+* NumPy → https://numpy.org/doc/
+* Pandas → https://pandas.pydata.org/docs/
+* Scikit-learn → https://scikit-learn.org/stable/
 
 ---
 
@@ -226,14 +227,14 @@ pipeline.fit(X_train, y_train)
 
 This repository is designed to:
 
-- Build strong ML fundamentals  
-- Provide hands-on implementation  
-- Bridge theory and real-world systems  
+* Build strong ML fundamentals  
+* Provide hands-on implementation  
+* Bridge theory and real-world systems  
 
 ---
 
 ## 🚀 Future Scope
 
-- Deep Learning (CNN, RNN, LSTM)  
-- Deployment (FastAPI, Docker)  
-- MLOps (CI/CD, Monitoring)  
+* Deep Learning (CNN, RNN, LSTM)  
+* Deployment (FastAPI, Docker)  
+* MLOps (CI/CD, Monitoring)  
