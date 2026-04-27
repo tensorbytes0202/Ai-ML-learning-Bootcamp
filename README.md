@@ -2,19 +2,18 @@
 *A structured, implementation-first guide to Machine Learning — from intuition to production-ready workflows.*
 
 ---
-
 ## 🧭 Table of Contents
-1. Introduction to Artificial Intelligence  
-2. Introduction to Machine Learning  
-3. Current State of AI  
-4. Types of Machine Learning  
-5. Problem Formulation  
-6. Machine Learning Pipeline  
-7. Libraries & Tools  
-8. Dataset Understanding (EDA)  
-9. Model Implementation  
-10. Scikit-learn Pipeline  
-11. Resources  
+1. [Introduction to Artificial Intelligence](#-1-introduction-to-artificial-intelligence)  
+2. [Introduction to Machine Learning](#-2-introduction-to-machine-learning)  
+3. [Current State of AI](#-3-current-state-of-ai)  
+4. [Types of Machine Learning](#-4-types-of-machine-learning)  
+5. [Problem Formulation](#-5-problem-formulation)  
+6. [Machine Learning Pipeline](#-6-machine-learning-pipeline-deep-dive)  
+7. [Libraries & Tools](#-7-libraries--tools)  
+8. [Dataset Understanding (EDA)](#-8-dataset-understanding-eda)  
+9. [Model Implementation](#-9-model-implementation)  
+10. [Scikit-learn Pipeline](#-10-scikit-learn-pipeline-advanced)  
+11. [Resources](#-11-resources)  
 
 ---
 
