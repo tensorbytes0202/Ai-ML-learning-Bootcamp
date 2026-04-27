@@ -3,7 +3,7 @@
 
 ---
 
- 🧭 Table of Contents
+ # 🧭 Table of Contents
 - [1. Introduction to Artificial Intelligence](#-1-introduction-to-artificial-intelligence)
 - [2. Introduction to Machine Learning](#-2-introduction-to-machine-learning)
 - [3. Current State of AI](#-3-current-state-of-ai)
@@ -18,79 +18,58 @@
 
 ---
 
-# 🧠 1. Introduction to Artificial Intelligence
+🧠 1. Introduction to Artificial Intelligence
 
 Artificial Intelligence (AI) refers to systems that can:
-- Learn from data  
-- Make decisions  
-- Adapt over time  
 
-> AI systems are intelligent agents that perceive and act to achieve goals.
+Learn from data
+Make decisions
+Adapt over time
 
----
+AI systems are intelligent agents that perceive and act to achieve goals.
 
-# 🤖 2. Introduction to Machine Learning
+🤖 2. Introduction to Machine Learning
 
 Machine Learning enables systems to learn patterns from data instead of hardcoded rules.
 
-### 🧩 ML as Function Learning
-
+🧩 ML as Function Learning
 f(X) → Y
-
-
-- X → Features  
-- Y → Target  
-
----
-
-# 🌐 3. Current State of AI
-
-- 🤖 AI Agents  
-- 🧠 Large Language Models  
-- 🎨 Generative AI  
+X → Features
+Y → Target
+🌐 3. Current State of AI
+🤖 AI Agents
+🧠 Large Language Models
+🎨 Generative AI
 
 ⚠️ All modern AI systems rely on ML pipelines.
 
----
-
-# 📊 4. Types of Machine Learning
-
-### 🟦 Supervised Learning
-- Regression  
-- Classification  
-
-### 🟩 Unsupervised Learning
-- Clustering  
-- Dimensionality Reduction  
-
-### 🟥 Reinforcement Learning
-- Learning via rewards  
-
----
-
-# 🎯 5. Problem Formulation
+📊 4. Types of Machine Learning
+🟦 Supervised Learning
+Regression
+Classification
+🟩 Unsupervised Learning
+Clustering
+Dimensionality Reduction
+🟥 Reinforcement Learning
+Learning via rewards
+🎯 5. Problem Formulation
 
 A correct ML system starts with:
-- Features (X)  
-- Target (Y)  
+
+Features (X)
+Target (Y)
 
 ⚠️ Poor problem definition leads to poor models.
 
----
+🔄 6. Machine Learning Pipeline (Deep Dive)
+🟦 Step 1: Data Extraction
 
-# 🔄 6. Machine Learning Pipeline (Deep Dive)
-
-## 🟦 Step 1: Data Extraction
 Sources:
-- CSV  
-- Databases  
-- APIs  
 
----
-
-## 🟩 Step 2: Data Ingestion
-
-```python
+CSV
+Databases
+APIs
+🟩 Step 2: Data Ingestion
 import pandas as pd
 
 data = pd.read_csv(
@@ -105,8 +84,8 @@ print(data.head())
 print(data.info())
 print(data.describe(include='all'))
 
-📎 Footnote:
-read_csv() supports flexible parsing, missing value handling, and memory optimization via parameters like sep, na_values, and low_memory.
+📎 Note:
+read_csv() supports flexible parsing, missing value handling, and memory optimization.
 
 🟨 Step 3: Data Understanding
 missing = data.isnull().sum()
@@ -160,12 +139,13 @@ preds = model.predict(X_test)
 
 print(classification_report(y_test, preds))
 
-📎 Footnote:
-LogisticRegression minimizes log-loss using optimization algorithms like LBFGS and supports binary and multiclass classification.
+📎 Note:
+Logistic Regression minimizes log-loss using LBFGS and supports binary & multiclass classification.
 
 🔗 10. Scikit-learn Pipeline (Advanced)
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
 
 pipeline = Pipeline([
     ("scaler", StandardScaler()),
@@ -174,13 +154,12 @@ pipeline = Pipeline([
 
 pipeline.fit(X_train, y_train)
 
-📎 Footnote:
-Pipelines help prevent data leakage, ensure reproducibility, and standardize workflows.
+📎 Note:
+Pipelines prevent data leakage, improve reproducibility, and standardize workflows.
 
 📚 11. Resources
-Official documentation:
-pandas
-scikit-learn
+pandas documentation
+scikit-learn documentation
 ⭐ Final Note
 
 This repository is designed to:
