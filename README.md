@@ -95,17 +95,35 @@ Sources:
 ```python
 import pandas as pd
 
-data = pd.read_csv(
-    "data/dataset.csv",
-    sep=",",
-    encoding="utf-8",
-    na_values=["NA", "?", ""],
-    low_memory=False
-)
+# ----------- Load Data -----------
+def load_data(path):
+    return pd.read_csv(
+        path,
+        sep=",",
+        encoding="utf-8",
+        na_values=["NA", "?", ""],
+        low_memory=False
+    )
 
-print(data.head())
-print(data.info())
-print(data.describe(include='all'))
+# ----------- Basic EDA -----------
+def explore_data(df):
+    print("\n🔹 Preview:")
+    print(df.head())
+
+    print("\n🔹 Info:")
+    print(df.info())
+
+    print("\n🔹 Summary:")
+    print(df.describe(include="all"))
+
+    print("\n🔹 Missing Values:")
+    print(df.isnull().sum())
+
+
+# ----------- Run -----------
+if __name__ == "__main__":
+    df = load_data("data/dataset.csv")
+    explore_data(df)
 ```
 
 ---
@@ -113,13 +131,24 @@ print(data.describe(include='all'))
 ### 🟨 Step 3: Data Understanding
 
 ```python
-missing = data.isnull().sum()
-duplicates = data.duplicated().sum()
-cardinality = data.nunique()
+import pandas as pd
 
-print(missing)
-print("Duplicates:", duplicates)
-print(cardinality)
+# ----------- Data Quality Checks -----------
+def check_data_quality(df):
+    print("\n🔹 Missing Values:")
+    print(df.isnull().sum())
+
+    print("\n🔹 Duplicate Rows:")
+    print("Duplicates:", df.duplicated().sum())
+
+    print("\n🔹 Cardinality (Unique Values per Column):")
+    print(df.nunique())
+
+
+# ----------- Run -----------
+if __name__ == "__main__":
+    df = pd.read_csv("data/dataset.csv")
+    check_data_quality(df)
 ```
 
 ---
@@ -127,13 +156,30 @@ print(cardinality)
 ### 🟥 Step 4: Data Cleaning
 
 ```python
-data = data.drop_duplicates()
+import pandas as pd
 
-for col in data.select_dtypes(include='number').columns:
-    data[col] = data[col].fillna(data[col].median())
+# ----------- Data Cleaning -----------
+def clean_data(df):
+    # Remove duplicates
+    df = df.drop_duplicates()
 
-for col in data.select_dtypes(include='object').columns:
-    data[col] = data[col].fillna(data[col].mode()[0])
+    # Fill missing values (numeric → median)
+    for col in df.select_dtypes(include="number").columns:
+        df[col] = df[col].fillna(df[col].median())
+
+    # Fill missing values (categorical → mode)
+    for col in df.select_dtypes(include="object").columns:
+        df[col] = df[col].fillna(df[col].mode()[0])
+
+    return df
+
+
+# ----------- Run -----------
+if __name__ == "__main__":
+    df = pd.read_csv("data/dataset.csv")
+    df = clean_data(df)
+
+    print("✅ Data cleaned successfully")
 ```
 
 ---
@@ -141,18 +187,59 @@ for col in data.select_dtypes(include='object').columns:
 ### 🔵 Step 5: Feature Engineering
 
 ```python
-data = pd.get_dummies(data, drop_first=True)
+import pandas as pd
 
-X = data.drop("target", axis=1)
-y = data["target"]
+# ----------- Encoding & Split -----------
+def prepare_data(df, target_col):
+    # One-hot encoding
+    df = pd.get_dummies(df, drop_first=True)
+
+    # Split features & target
+    X = df.drop(target_col, axis=1)
+    y = df[target_col]
+
+    return X, y
+
+
+# ----------- Run -----------
+if __name__ == "__main__":
+    df = pd.read_csv("data/dataset.csv")
+    X, y = prepare_data(df, "target")
+
+    print("✅ Data prepared successfully")
+    print("X shape:", X.shape)
+    print("y shape:", y.shape)
 ```
 
 ---
 
 ### 🧠 Production Insight
-* Use ETL pipelines  
-* Version data (DVC)  
-* Validate data automatically  
+🔹 Use ETL Pipelines
+Structure your workflow into clear stages:
+
+Extract → Load raw data from source
+Transform → Clean, preprocess, and engineer features
+Load → Store processed data for modeling
+
+This keeps your pipeline modular and scalable.
+
+🔹 Version Data (DVC)
+Use tools like DVC (Data Version Control) to:
+
+Track dataset changes
+Reproduce experiments
+Manage large files outside Git
+
+Ensures reproducibility and collaboration.
+
+🔹 Validate Data Automatically
+Add automated checks to ensure data quality:
+
+Schema validation (column types, formats)
+Missing value thresholds
+Range checks & constraints
+
+You can use tools like Great Expectations or write custom validation scripts. 
 
 ---
 
@@ -170,9 +257,19 @@ y = data["target"]
 ```python
 import matplotlib.pyplot as plt
 
-data.hist(figsize=(12, 10))
-plt.tight_layout()
-plt.show()
+# ----------- Visualization -----------
+def plot_histograms(df):
+    df.hist(figsize=(12, 10))
+    plt.tight_layout()
+    plt.show()
+
+
+# ----------- Run -----------
+if __name__ == "__main__":
+    import pandas as pd
+
+    df = pd.read_csv("data/dataset.csv")
+    plot_histograms(df)
 ```
 
 ---
@@ -184,16 +281,30 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
 
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42, stratify=y
-)
+# ----------- Train & Evaluate -----------
+def train_model(X, y):
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y,
+        test_size=0.2,
+        random_state=42,
+        stratify=y
+    )
 
-model = LogisticRegression(max_iter=1000)
-model.fit(X_train, y_train)
+    model = LogisticRegression(max_iter=1000)
+    model.fit(X_train, y_train)
 
-preds = model.predict(X_test)
+    preds = model.predict(X_test)
 
-print(classification_report(y_test, preds))
+    print("\n🔹 Classification Report:")
+    print(classification_report(y_test, preds))
+
+    return model
+
+
+# ----------- Run -----------
+if __name__ == "__main__":
+    # Assume X, y already prepared
+    model = train_model(X, y)
 ```
 
 ---
@@ -205,12 +316,20 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 
-pipeline = Pipeline([
-    ("scaler", StandardScaler()),
-    ("model", LogisticRegression(max_iter=1000))
-])
+# ----------- Pipeline -----------
+def build_pipeline():
+    return Pipeline([
+        ("scaler", StandardScaler()),
+        ("model", LogisticRegression(max_iter=1000))
+    ])
 
-pipeline.fit(X_train, y_train)
+
+# ----------- Train -----------
+if __name__ == "__main__":
+    pipeline = build_pipeline()
+    pipeline.fit(X_train, y_train)
+
+    print("✅ Pipeline trained successfully")
 ```
 
 ---
